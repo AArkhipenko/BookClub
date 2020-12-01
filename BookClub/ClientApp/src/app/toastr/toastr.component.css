@@ -1,0 +1,37 @@
+.toastr-panel {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.toastr-block {
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #c5c5c5;
+  background-color: #030303;
+  opacity: 0.7;
+  word-wrap: break-word;
+  color: #FFFFFF;
+  padding: 10px;
+  cursor: pointer;
+}
+
+  .toastr-block:hover {
+    opacity: 0.9;
+  }
+
+.toastr-success {
+  background-color: #51A351;
+}
+
+.toastr-error {
+  background-color: #BD362F;
+}
+
+.toastr-info {
+  background-color: #2F96B4;
+}
+
+.toastr-warning {
+  background-color: #F89406;
+}

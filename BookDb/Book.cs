@@ -12,7 +12,6 @@ namespace BookDb
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Serial { get; set; }
 
         public virtual ICollection<LnkUserBook> LnkUserBook { get; set; }
     }

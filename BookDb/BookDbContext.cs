@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Logging;
 
 namespace BookDb
 {
@@ -24,6 +23,7 @@ namespace BookDb
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseNpgsql("Host=localhost;Database=bookclub;Username=postgres;Password=postgres");
             }
         }
@@ -39,8 +39,6 @@ namespace BookDb
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name");
-
-                entity.Property(e => e.Serial).HasColumnName("serial");
             });
 
             modelBuilder.Entity<LnkUserBook>(entity =>
@@ -86,19 +84,9 @@ namespace BookDb
                     .IsRequired()
                     .HasColumnName("login");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnName("name");
-
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasColumnName("password");
-
-                entity.Property(e => e.Patronymic).HasColumnName("patronymic");
-
-                entity.Property(e => e.Surname)
-                    .IsRequired()
-                    .HasColumnName("surname");
             });
 
             OnModelCreatingPartial(modelBuilder);
