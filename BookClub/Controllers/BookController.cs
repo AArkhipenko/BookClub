@@ -29,7 +29,7 @@ namespace BookClub.Controllers
         {
             var id = HttpContext.User.FindFirst("id");
             if (id == null)
-                throw new Exception("Ошибка аутентификации");
+                throw new Exceptions.AuthorizationException("Ошибка аутентификации, отсутствуют дополнительные параметры пользователя");
             return GetBookList(int.Parse(id.Value), search.bookName, true);
         }
 
@@ -39,7 +39,7 @@ namespace BookClub.Controllers
         {
             var id = HttpContext.User.FindFirst("id");
             if (id == null)
-                throw new Exception("Ошибка аутентификации");
+                throw new Exceptions.AuthorizationException("Ошибка аутентификации, отсутствуют дополнительные параметры пользователя");
             return GetBookList(int.Parse(id.Value), search.bookName, false);
         }
 
@@ -79,7 +79,7 @@ namespace BookClub.Controllers
         {
             var id = HttpContext.User.FindFirst("id");
             if (id == null)
-                throw new Exception("Ошибка аутентификации");
+                throw new Exceptions.AuthorizationException("Ошибка аутентификации, отсутствуют дополнительные параметры пользователя");
 
             using (BookDb.BookDbContext db = new BookDb.BookDbContext())
             {
@@ -106,7 +106,7 @@ namespace BookClub.Controllers
         {
             var id = HttpContext.User.FindFirst("id");
             if (id == null)
-                throw new Exception("Ошибка аутентификации");
+                throw new Exceptions.AuthorizationException("Ошибка аутентификации, отсутствуют дополнительные параметры пользователя");
 
             using (BookDb.BookDbContext db = new BookDb.BookDbContext())
             {
@@ -114,7 +114,7 @@ namespace BookClub.Controllers
                 {
                     var lnk = db.LnkUserBook.Find(search.lnkId.Value);
                     if (lnk == null)
-                        throw new Exception("Связка не найдена");
+                        throw new Exceptions.GeneralException("Связка не найдена");
                     
                     db.LnkUserBook.Remove(lnk);
                     db.SaveChanges();

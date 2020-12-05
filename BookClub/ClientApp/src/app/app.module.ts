@@ -43,7 +43,7 @@ import { CookieService } from 'ngx-cookie-service';
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'registry', component: RegistryComponent },
-      { path: 'booklist', component: BookListComponent, canActivate: [AuthGuard] },
+      { path: 'booklist', component: BookListComponent },
       { path: 'mybooklist', component: MyBookListComponent, canActivate: [AuthGuard] },
     ], { relativeLinkResolution: 'legacy' })
   ],

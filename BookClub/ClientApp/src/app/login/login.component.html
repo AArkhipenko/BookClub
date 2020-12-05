@@ -1,9 +1,15 @@
-<p>login works!</p>
 
-<label>Username</label>
-<input type="text" [(ngModel)]="username" />
-<br />
-<label>Password</label>
-<input type="password" [(ngModel)]="password" />
-<br />
-<button class="btn btn-primary" (click)="logIn()">LogIn</button>
+<div class="wrapper">
+  <fieldset>
+    <legend>Вход</legend>
+    <div class="table">
+      <label>Логин</label>
+      <input type="text" [(ngModel)]="username" />
+      <label>Пароль</label>
+      <input type="password" [(ngModel)]="password" />
+      <div class="row">
+        <button class="btn btn-primary" (click)="logIn()">Войти</button>
+      </div>
+    </div>
+  </fieldset>
+</div>

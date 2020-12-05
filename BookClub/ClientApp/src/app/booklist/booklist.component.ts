@@ -32,7 +32,7 @@ export class BookListComponent extends BookList implements OnInit  {
       this._toastr.showToast(new ToastrModel(ToastrType.success, "Книга добавлена в список прочитанных"));
       this.getBookList();
     }, error => {
-      this._toastr.showToast(new ToastrModel(ToastrType.error, error.error));
+      this._toastr.showToast(new ToastrModel(ToastrType.error, error.error.title));
       console.error(error);
     });
   }

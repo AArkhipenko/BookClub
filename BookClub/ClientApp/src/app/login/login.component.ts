@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       this._toastr.showToast(new ToastrModel(ToastrType.success, "Вход выполнен"));
       this._router.navigate(['/booklist']);
     }, error => {
-        this._toastr.showToast(new ToastrModel(ToastrType.error, error.error));
+        this._toastr.showToast(new ToastrModel(ToastrType.error, error.error.title));
         console.error(error);
     });
   }

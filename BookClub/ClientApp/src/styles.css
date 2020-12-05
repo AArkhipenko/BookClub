@@ -1,6 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
 
-/* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
 }
@@ -14,3 +12,29 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+div.wrapper {
+  border: 1px solid #c5c5c5;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
+  width: min-content;
+  margin: auto;
+}
+
+div.wrapper legend{
+    text-align:center;
+    border-bottom: 1px solid #c5c5c5;
+}
+
+div.table {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 4px;
+}
+
+  div.table > div.row {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 0;
+  }

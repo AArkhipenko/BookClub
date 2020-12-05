@@ -1,6 +1,10 @@
 
 <div class="toastr-panel">
-  <div *ngFor="let notification of notifications" (click)="closeNotification(notification)" class="toastr-block {{notification.class}}">
-    <span>{{notification.message}}</span>
+  <div *ngFor="let toastr of toastrs"
+       (click)="closeToastr(toastr)"
+       (mouseout)="onMouseOut(toastr)"
+       (mouseover)="onMouseOver(toastr)"
+       class="toastr-block {{toastr.class}}">
+    <span>{{toastr.message}}</span>
   </div>
 </div>

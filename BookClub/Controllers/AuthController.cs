@@ -28,13 +28,13 @@ namespace BookClub.Controllers
         public IActionResult LogIn(Models.LoginModel user)
         {
             if (user == null)
-                throw new Exception("Модель аутентификации отсутствует");
+                throw new Exceptions.GeneralException("Модель аутентификации отсутствует");
 
             using (BookDb.BookDbContext db = new BookDb.BookDbContext())
             {
                 BookDb.User dbUser = db.User.FirstOrDefault(x => x.Login == user.UserName && x.Password == user.Password);
                 if (dbUser == null)
-                    throw new Exception("Указаны неверный логин или пароль");
+                    throw new Exceptions.AuthorizationException("Указаны неверный логин или пароль");
                 else
                 {
                     //аутентификация прошла успешно
@@ -82,7 +82,7 @@ namespace BookClub.Controllers
             using (BookDb.BookDbContext db = new BookDb.BookDbContext())
             {
                 if (db.User.Any(x => x.Login == model.UserName))
-                    throw new Exception("Пользователь с указанным логином уже имеется");
+                    throw new Exceptions.GeneralException("Пользователь с указанным логином уже имеется");
 
                 using (IDbContextTransaction trans = db.Database.BeginTransaction())
                 {

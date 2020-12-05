@@ -21,7 +21,7 @@ export class LogoutService {
     this._http.post(this._baseUrl + 'api/auth/logout', {}).subscribe(result => {
       this._toastr.showToast(new ToastrModel(ToastrType.success, "Выход выполнен"));
     }, error => {
-      this._toastr.showToast(new ToastrModel(ToastrType.error, error.error));
+      this._toastr.showToast(new ToastrModel(ToastrType.error, error.error.title));
       console.error(error);
     });
   }

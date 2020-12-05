@@ -1,21 +1,30 @@
+
 <div class="wrapper">
-  <input [(ngModel)]="bookName" (input)="getBookList()" />
-  <table aria-labelledby="tableLabel" *ngIf="bookList">
-    <thead>
-      <tr>
-        <th>№</th>
-        <th>Название</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of bookList; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ book.bookName }}</td>
-        <td>
-          <button class="btn-primary btn-primary" (click)="removeBook(book.lnkId)">-</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <fieldset>
+    <legend>Список прочитанных книг</legend>
+    <input [(ngModel)]="bookName" (input)="getBookList()" placeholder="Поиск..." class="form-control" />
+    <table *ngIf="bookList">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Название</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="bookList.length > 0">
+        <tr *ngFor="let book of bookList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ book.bookName }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="removeBook(book.lnkId)">-</button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="bookList.length == 0">
+        <tr>
+          <td colspan="3">Список пуст</td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
 </div>

@@ -17,6 +17,7 @@ export class RegistryComponent implements OnInit {
 
   public username: string = "";
   public password: string = "";
+  public testpassword: string = "";
 
   /**
    * Конструктор
@@ -38,6 +39,10 @@ export class RegistryComponent implements OnInit {
    * Метод регистрации на сервере
    * */
   public registry(): void {
+    if (this.password != this.testpassword) {
+      this._toastr.showToast(new ToastrModel(ToastrType.error, "Пароли не совпадают"));
+      return;
+    }
     //модель аутентификации
     const model: RegistryModel = {
       UserName: this.username,
